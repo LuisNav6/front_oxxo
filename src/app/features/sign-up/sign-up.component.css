@@ -1,4 +1,6 @@
-
+img{
+  height: 200px;
+}
 .card {
     width: 1000px; /* Ajusta el ancho del card */
   }
