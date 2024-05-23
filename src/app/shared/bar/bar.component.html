@@ -1,0 +1,16 @@
+<div class="d-flex" id="wrapper">
+
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper" class="bg-dark border-right text-white">
+      <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">SALESOFT</div>
+      <div class="list-group list-group-flush">
+          <a routerLink="/home"  class="list-group-item list-group-item-action bg-dark text-white">Home</a>          
+          <a href="#" *ngIf="rol=='soporte'" class="list-group-item list-group-item-action bg-dark text-white">Productos</a>
+          <a href="#" *ngIf="rol!=='cajero'" class="list-group-item list-group-item-action bg-dark text-white">Sucursales</a>
+          <a href="#" *ngIf="rol!=='cajero'" class="list-group-item list-group-item-action bg-dark text-white">Inventario</a>
+          <a href="#" *ngIf="rol!=='cajero'" class="list-group-item list-group-item-action bg-dark text-white">Reportes</a>
+          <a routerLink="/carrito" class="list-group-item list-group-item-action bg-dark text-white">
+              <i class="bi bi-cart-fill icono-azul-claro"></i> Carrito
+          </a>
+      </div>
+  </div>

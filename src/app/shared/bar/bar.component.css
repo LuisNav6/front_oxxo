@@ -1,0 +1,21 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+#wrapper {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+#sidebar-wrapper {
+  width: 250px;
+  background-color: #343a40; /* Color oscuro para el sidebar */
+}
+
+#page-content-wrapper {
+  flex: 1;
+}
