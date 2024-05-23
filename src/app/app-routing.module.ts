@@ -5,14 +5,17 @@ import { SignUpComponent } from './features/sign-up/sign-up.component';
 import { ProductsComponent } from './features/products/products.component';
 import { NewProductComponent } from './shared/new-product/new-product.component';
 import { UpdateProductComponent } from './shared/update-product/update-product.component';
+import { HomeComponent } from './features/home/home.component';
+import { CarritoComponent } from './features/carrito/carrito.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'products', component: ProductsComponent},
   { path: 'new-product', component: NewProductComponent},
-  { path: 'update-product', component: UpdateProductComponent }
-];
-
+  { path: 'update-product', component: UpdateProductComponent },
+  { path: 'home', component: HomeComponent},
+  { path: 'carrito', component: CarritoComponent}
+]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
