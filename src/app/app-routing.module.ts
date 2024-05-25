@@ -11,6 +11,10 @@ import { InventoryComponent } from './features/inventory/inventory.component';
 import { ReportsComponent } from './features/reports/reports.component';
 import { UsuariosComponent } from './features/usuarios/usuarios.component';
 import { BranchOfficesComponent } from './features/branch-offices/branch-offices.component';
+import { AddProductInvComponent } from './shared/add-product-inv/add-product-inv.component';
+import { UpdateProductInvComponent } from './shared/update-product-inv/update-product-inv.component';
+import { NewBranchComponent } from './shared/new-branch/new-branch.component';
+import { UpdateBranchComponent } from './shared/update-branch/update-branch.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
@@ -23,7 +27,12 @@ const routes: Routes = [
   { path: 'inventario', component: InventoryComponent},
   { path: 'reportes', component: ReportsComponent},
   { path: 'usuarios', component: UsuariosComponent},
-  { path: 'carrito', component: CarritoComponent}
+  { path: 'carrito', component: CarritoComponent},
+  {path: 'add-product-inventory', component: AddProductInvComponent},
+  {path: 'update-product-inventory', component: UpdateProductInvComponent},
+  {path: 'new-branch', component: NewBranchComponent},
+  {path: 'update-branch', component: UpdateBranchComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' }
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

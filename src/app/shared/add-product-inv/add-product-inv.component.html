@@ -4,7 +4,7 @@
             <img src="../../../assets/images/logo_white.png" alt="Imagen" class="img-fluid">
         </div>
       <div class="card-body text-center">
-        <h2 class="card-title">Actualizar Producto</h2>
+        <h2 class="card-title">Crear Producto</h2>
         <br>
         <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
           <div class="form-floating mb-3">
@@ -30,7 +30,7 @@
             <input class="form-control" type="file" id="foto" formControlName="foto" required>
           </div>
   
-          <button type="submit" class="btn btn-info" [disabled]="!productoForm.valid">Actualizar producto</button>
+          <button type="submit" class="btn btn-info" [disabled]="!productoForm.valid">Crear producto</button>
         </form>
       </div>
     </div>

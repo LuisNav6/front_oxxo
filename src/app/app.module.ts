@@ -17,6 +17,10 @@ import { BranchOfficesComponent } from './features/branch-offices/branch-offices
 import { ReportsComponent } from './features/reports/reports.component';
 import { AuthService } from './shared/auth.service';
 import { UsuariosComponent } from './features/usuarios/usuarios.component';
+import { NewBranchComponent } from './shared/new-branch/new-branch.component';
+import { UpdateBranchComponent } from './shared/update-branch/update-branch.component';
+import { AddProductInvComponent } from './shared/add-product-inv/add-product-inv.component';
+import { UpdateProductInvComponent } from './shared/update-product-inv/update-product-inv.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { UsuariosComponent } from './features/usuarios/usuarios.component';
     BarComponent,
     BranchOfficesComponent,
     ReportsComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    NewBranchComponent,
+    UpdateBranchComponent,
+    AddProductInvComponent,
+    UpdateProductInvComponent
   ],
   imports: [
     BrowserModule,

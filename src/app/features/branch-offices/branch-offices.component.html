@@ -1,1 +1,37 @@
-<p>branch-offices works!</p>
+<div class="container shadow">
+    <div class="my-3 text-center mb-4">
+        <img src="../../../assets/images/logo_white.png" alt="Imagen" class="img-fluid">
+    </div>
+    <h3 class="text-center">Sucursales</h3>
+    <div class="my-3 d-flex justify-content-center">
+  <button class="btn btn-info" title="Crear producto" (click)="crearSucursal()"><i class="fa-solid fa-plus"></i></button>
+</div>
+<table class="table table-hover text-center">
+  <thead>
+    <tr>
+      <th>Nombre de la sucursal</th>
+      <th>Dirección</th>
+      <th>Código postal</th>
+      <th>RFC</th>
+      <th>Teléfono</th>
+      <th>Administrador</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let sucursal of sucursales">
+      <td>{{sucursal.nombre}}</td>
+      <td>{{sucursal.location}}</td>
+      <td>{{sucursal.CP}}</td>
+      <td>{{sucursal.RFC}}</td>
+      <td>{{sucursal.tel}}</td>
+      <td>{{sucursal.admin}}</td>
+      <td>
+        <button class="btn btn-warning mx-4" title="Actualizar producto" (click)="actualizarSucursal()"><i class="fa-regular fa-pen-to-square"></i></button>
+        <button class="btn btn-danger" title="Eliminar producto"><i class="fa-regular fa-trash-can"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
