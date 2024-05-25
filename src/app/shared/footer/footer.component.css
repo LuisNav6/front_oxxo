@@ -7,6 +7,11 @@ body {
 }
 
 footer {
-    background-color: #343a40;
+    background-color: #bababa;
     color: #fff;
+}
+.logo{
+    width:30px;
+    height:30px;
+    border-radius: 5px;
 }
