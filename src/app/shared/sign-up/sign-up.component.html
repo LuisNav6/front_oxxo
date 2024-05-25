@@ -8,18 +8,18 @@
       <br>
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="nombre" placeholder="sucursal" formControlName="nombre">
-          <label for="nombre">Nombre</label>
+          <input type="text" class="form-control" id="name" placeholder="usuario" formControlName="name">
+          <label for="name">Nombre</label>
         </div>
 
         <div class="form-floating my-3">
-          <input type="text" class="form-control" id="apellido" placeholder="usuario" formControlName="apellido">
-          <label for="apellido">Apellido</label>
+          <input type="text" class="form-control" id="lastname" placeholder="usuario" formControlName="lastname">
+          <label for="lastname">Apellido</label>
         </div>
 
         <div class="form-floating my-3">
-          <input type="email" class="form-control" id="correo" placeholder="correo" formControlName="correo">
-          <label for="correo">Correo</label>
+          <input type="email" class="form-control" id="correo" placeholder="email" formControlName="email">
+          <label for="email">Correo</label>
         </div>
 
         <div class="form-floating my-3">
@@ -44,7 +44,7 @@
           <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword" placeholder="password">
           <label for="confirmPassword">Confirmar contraseña</label>
         </div>
-        <button type="submit" class="btn btn-info" [disabled]="!registerForm.valid">Crear usuario</button>
+        <button type="submit" class="btn btn-outline-info" [disabled]="!registerForm.valid">Crear usuario</button>
       </form>
     </div>
   </div>
