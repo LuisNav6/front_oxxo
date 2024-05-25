@@ -1,24 +1,50 @@
 <div class="d-flex" id="wrapper" [class.toggled]="isSidebarToggled">
-    <!-- Toggle Image -->
-    <img id="menu-toggle" src="assets/images/logo_white.png" alt="Toggle Sidebar" (click)="toggleSidebar()">
-    
-    <!-- Sidebar -->
-    <div id="sidebar-wrapper" class="bg border-right text-black">
+  <!-- Contenedor para la imagen y el nombre de usuario -->
+  <div class="d-flex flex-column align-items-center" id="toggle-container">
+      <img id="menu-toggle" src="assets/images/logo_white.png" alt="Toggle Sidebar" (click)="toggleSidebar()">
+      <p id="username">{{usuario}}</p>
+  </div>
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper" class="bg border-right text-black">
       <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"></div>
-      <div class="list-group list-group-flush">
-        <a routerLink="/home" class="list-group-item list-group-item-action bg text-black">Home</a>
-        <a routerLink="/productos" *ngIf="rol=='soporte'" class="list-group-item list-group-item-action bg text-black">Productos</a>
-        <a routerLink="/sucursales" *ngIf="rol!=='cajero'" class="list-group-item list-group-item-action bg text-black">Sucursales</a>
-        <a routerLink="/inventario" *ngIf="rol!=='cajero'" class="list-group-item list-group-item-action bg text-black">Inventario</a>
-        <a routerLink="/reportes" *ngIf="rol!=='cajero'" class="list-group-item list-group-item-action bg text-black">Reportes</a>
-        <a routerLink="/usuarios" *ngIf="rol!=='cajero'" class="list-group-item list-group-item-action bg text-black">Usuarios</a>
-        <a routerLink="/carrito" class="list-group-item list-group-item-action bg text-black">
-          <i class="bi bi-cart-fill icono-azul-claro"></i> Carrito
+      <div class="list-group list-group-flush text-center">
+          <a routerLink="/home" class="list-group-item list-group-item-action bg text-black">
+              <i class="bi bi-house"></i>
+              <span *ngIf="!isSidebarToggled">Inicio</span>
+          </a>
+          <a routerLink="/productos" *ngIf="rol=='soporte'" class="list-group-item list-group-item-action bg text-black">
+              <i class="bi bi-box"></i>
+              <span *ngIf="!isSidebarToggled">Productos</span>
+          </a>
+          <a routerLink="/sucursales" *ngIf="rol=='soporte'" class="list-group-item list-group-item-action bg text-black">
+              <i class="bi bi-building"></i>
+              <span *ngIf="!isSidebarToggled">Sucursales</span>
+          </a>
+          <a routerLink="/inventario" *ngIf="rol!=='cajero'" class="list-group-item list-group-item-action bg text-black">
+              <i class="bi bi-boxes"></i>
+              <span *ngIf="!isSidebarToggled">Inventario</span>
+          </a>
+          <a routerLink="/reportes" *ngIf="rol!=='cajero'" class="list-group-item list-group-item-action bg text-black">
+              <i class="bi bi-bar-chart"></i>
+              <span *ngIf="!isSidebarToggled">Reportes</span>
+          </a>
+          <a routerLink="/usuarios" *ngIf="rol=='soporte'" class="list-group-item list-group-item-action bg text-black">
+              <i class="bi bi-people"></i>
+              <span *ngIf="!isSidebarToggled">Usuarios</span>
+          </a>
+          <a routerLink="/carrito" class="list-group-item list-group-item-action bg text-black">
+              <i class="bi bi-cart-fill icono-azul-claro"></i>
+              <span *ngIf="!isSidebarToggled">Carrito</span>
+          </a>
+          <a routerLink="/" class="list-group-item list-group-item-action bg text-black">
+            <i class="bi bi-bag-fill"></i>
+            <span *ngIf="!isSidebarToggled">Punto de venta</span>
         </a>
-        <!-- Botón de log-out -->
-        <a href="#" class="list-group-item list-group-item-action bg text-black" (click)="logout()">
-          <i class="bi bi-box-arrow-right"></i> Log-out
-        </a>
+          <!-- Botón de log-out -->
+          <a href="#" class="list-group-item list-group-item-action bg text-black" (click)="logout()">
+              <i class="bi bi-box-arrow-right"></i>
+              <span *ngIf="!isSidebarToggled">Log-out</span>
+          </a>
       </div>
-    </div>
+  </div>
 </div>

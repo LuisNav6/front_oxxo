@@ -7,7 +7,8 @@ import { AuthService } from '../auth.service'; // Asegúrate de importar el serv
   styleUrls: ['./bar.component.css']
 })
 export class BarComponent {
-  rol: string = "cajero";
+  rol: string = "soporte";
+  usuario: string = "Usuario";
   isSidebarToggled: boolean = false;
 
   constructor(private authService: AuthService) {}
