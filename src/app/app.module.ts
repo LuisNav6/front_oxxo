@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './features/login/login.component';
-import { SignUpComponent } from './features/sign-up/sign-up.component';
+import { SignUpComponent } from './shared/sign-up/sign-up.component';
 import { ProductsComponent } from './features/products/products.component';
 import { NewProductComponent } from './shared/new-product/new-product.component';
 import { UpdateProductComponent } from './shared/update-product/update-product.component';
@@ -21,6 +21,7 @@ import { NewBranchComponent } from './shared/new-branch/new-branch.component';
 import { UpdateBranchComponent } from './shared/update-branch/update-branch.component';
 import { AddProductInvComponent } from './shared/add-product-inv/add-product-inv.component';
 import { UpdateProductInvComponent } from './shared/update-product-inv/update-product-inv.component';
+import { UpdateUserComponent } from './shared/update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { UpdateProductInvComponent } from './shared/update-product-inv/update-pr
     NewBranchComponent,
     UpdateBranchComponent,
     AddProductInvComponent,
-    UpdateProductInvComponent
+    UpdateProductInvComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,

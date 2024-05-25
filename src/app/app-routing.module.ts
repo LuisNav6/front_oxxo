@@ -1,7 +1,7 @@
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './features/login/login.component';
-import { SignUpComponent } from './features/sign-up/sign-up.component';
+import { SignUpComponent } from './shared/sign-up/sign-up.component';
 import { NewProductComponent } from './shared/new-product/new-product.component';
 import { UpdateProductComponent } from './shared/update-product/update-product.component';
 import { HomeComponent } from './features/home/home.component';
@@ -15,9 +15,11 @@ import { AddProductInvComponent } from './shared/add-product-inv/add-product-inv
 import { UpdateProductInvComponent } from './shared/update-product-inv/update-product-inv.component';
 import { NewBranchComponent } from './shared/new-branch/new-branch.component';
 import { UpdateBranchComponent } from './shared/update-branch/update-branch.component';
+import { UpdateUserComponent } from './shared/update-user/update-user.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
+  { path: 'update-user', component: UpdateUserComponent },
   { path: 'products', component: ProductsComponent},
   { path: 'new-product', component: NewProductComponent},
   { path: 'update-product', component: UpdateProductComponent },
