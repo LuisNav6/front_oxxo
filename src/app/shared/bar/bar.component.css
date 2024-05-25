@@ -13,10 +13,11 @@ body {
 }
 
 #sidebar-wrapper {
+  padding-top: 30px;
   width: 250px;
   background-color: #dadada;
   transition: all 0.3s;
-
+ 
 }
 
 #wrapper.toggled #sidebar-wrapper {
