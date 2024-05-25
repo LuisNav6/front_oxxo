@@ -9,13 +9,56 @@ body {
   display: flex;
   width: 100%;
   min-height: 100vh;
+  position: relative; /* Asegura que el posicionamiento de la imagen sea relativo al wrapper */
 }
 
 #sidebar-wrapper {
+  padding-top: 30px;
   width: 250px;
-  background-color: #343a40; /* Color oscuro para el sidebar */
+  background-color: #dadada;
+  transition: all 0.3s;
+ 
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  width: 70px; /* Ancho de la imagen más 10px a cada lado */
+}
+
+#wrapper.toggled .list-group {
+  margin-bottom: 30px; /* Mueve las listas 30px hacia abajo */
 }
 
 #page-content-wrapper {
   flex: 1;
+}
+
+#menu-toggle {
+  position: absolute;
+  top: 10px; /* Ajusta la distancia desde la parte superior */
+  margin-bottom: 30px;
+  left: 50%; /* Centra horizontalmente */
+  transform: translateX(-50%); /* Ajusta para centrar horizontalmente */
+  width: 50px; /* Ajusta el tamaño de la imagen */
+  height: 50px; /* Ajusta el tamaño de la imagen */
+  cursor: pointer;
+  transition: opacity 0.3s, box-shadow 0.3s;
+  border-radius: 5px;
+}
+
+#menu-toggle:hover {
+  opacity: 0.7;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#menu-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+#wrapper:not(.toggled) #sidebar-wrapper .list-group {
+  display: block; /*no despliega*/
+}
+
+#wrapper.toggled #sidebar-wrapper .list-group {
+  display: none; /*despliega*/
 }

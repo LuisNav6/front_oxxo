@@ -1,16 +1,24 @@
-<div class="d-flex" id="wrapper">
-
-  <!-- Sidebar -->
-  <div id="sidebar-wrapper" class="bg-dark border-right text-white">
-      <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">SALESOFT</div>
+<div class="d-flex" id="wrapper" [class.toggled]="isSidebarToggled">
+    <!-- Toggle Image -->
+    <img id="menu-toggle" src="assets/images/logo_white.png" alt="Toggle Sidebar" (click)="toggleSidebar()">
+    
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper" class="bg border-right text-black">
+      <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"></div>
       <div class="list-group list-group-flush">
-          <a routerLink="/home"  class="list-group-item list-group-item-action bg-dark text-white">Home</a>          
-          <a href="#" *ngIf="rol=='soporte'" class="list-group-item list-group-item-action bg-dark text-white">Productos</a>
-          <a href="#" *ngIf="rol!=='cajero'" class="list-group-item list-group-item-action bg-dark text-white">Sucursales</a>
-          <a href="#" *ngIf="rol!=='cajero'" class="list-group-item list-group-item-action bg-dark text-white">Inventario</a>
-          <a href="#" *ngIf="rol!=='cajero'" class="list-group-item list-group-item-action bg-dark text-white">Reportes</a>
-          <a routerLink="/carrito" class="list-group-item list-group-item-action bg-dark text-white">
-              <i class="bi bi-cart-fill icono-azul-claro"></i> Carrito
-          </a>
+        <a routerLink="/home" class="list-group-item list-group-item-action bg text-black">Home</a>
+        <a routerLink="/productos" *ngIf="rol=='soporte'" class="list-group-item list-group-item-action bg text-black">Productos</a>
+        <a routerLink="/sucursales" *ngIf="rol!=='cajero'" class="list-group-item list-group-item-action bg text-black">Sucursales</a>
+        <a routerLink="/inventario" *ngIf="rol!=='cajero'" class="list-group-item list-group-item-action bg text-black">Inventario</a>
+        <a routerLink="/reportes" *ngIf="rol!=='cajero'" class="list-group-item list-group-item-action bg text-black">Reportes</a>
+        <a routerLink="/usuarios" *ngIf="rol!=='cajero'" class="list-group-item list-group-item-action bg text-black">Usuarios</a>
+        <a routerLink="/carrito" class="list-group-item list-group-item-action bg text-black">
+          <i class="bi bi-cart-fill icono-azul-claro"></i> Carrito
+        </a>
+        <!-- Botón de log-out -->
+        <a href="#" class="list-group-item list-group-item-action bg text-black" (click)="logout()">
+          <i class="bi bi-box-arrow-right"></i> Log-out
+        </a>
       </div>
-  </div>
+    </div>
+</div>

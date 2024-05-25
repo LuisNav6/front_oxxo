@@ -15,6 +15,8 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { BarComponent } from './shared/bar/bar.component';
 import { BranchOfficesComponent } from './features/branch-offices/branch-offices.component';
 import { ReportsComponent } from './features/reports/reports.component';
+import { AuthService } from './shared/auth.service';
+import { UsuariosComponent } from './features/usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -30,14 +32,17 @@ import { ReportsComponent } from './features/reports/reports.component';
     FooterComponent,
     BarComponent,
     BranchOfficesComponent,
-    ReportsComponent
+    ReportsComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
