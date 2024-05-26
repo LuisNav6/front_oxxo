@@ -35,6 +35,15 @@
             </select>
             <label for="rol">Rol</label>
           </div>
+          <div class="form-floating mb-3">
+            <select class="form-select" id="branch" aria-label="select branch" formControlName="branch">
+              <option selected disabled>Elige tu Sucursal</option>
+              <option value="s1">Sucursal 1</option>
+              <option value="s2">Sucursal 2</option>
+              <option value="s3">Sucursal 3</option>
+            </select>
+            <label for="branch">Sucursal</label>
+          </div>
           <button type="submit" class="btn btn-outline-info" [disabled]="!UsuarioForm.valid">Actualizar usuario</button>
         </form>
       </div>

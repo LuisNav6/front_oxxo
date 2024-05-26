@@ -11,8 +11,8 @@ export class UpdateUserComponent {
     apellido: 'Apellido',
     email: 'x@email.com',
     tel: '1234567890',
-    rol: 'admin'
-
+    rol: 'admin',
+    branch: 's1'
   };
   
     UsuarioForm = this.fb.group({
@@ -20,7 +20,8 @@ export class UpdateUserComponent {
       apellido: [this.usuario.apellido, Validators.required],
       email: [this.usuario.email, Validators.required],
       tel: [this.usuario.tel, Validators.required],
-      rol: [this.usuario.rol, Validators.required]
+      rol: [this.usuario.rol, Validators.required],
+      branch: [this.usuario.branch, Validators.required]
     });
   
     constructor(private fb: FormBuilder) {}
