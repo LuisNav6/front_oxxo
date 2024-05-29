@@ -6,3 +6,6 @@
 * {
     font-family: 'myfont';
 }
+body{
+  position: relative;
+}
