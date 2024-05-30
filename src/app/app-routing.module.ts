@@ -16,6 +16,7 @@ import { UpdateProductInvComponent } from './shared/update-product-inv/update-pr
 import { NewBranchComponent } from './shared/new-branch/new-branch.component';
 import { UpdateBranchComponent } from './shared/update-branch/update-branch.component';
 import { UpdateUserComponent } from './shared/update-user/update-user.component';
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
@@ -34,7 +35,7 @@ const routes: Routes = [
   {path: 'update-product-inventory', component: UpdateProductInvComponent},
   {path: 'new-branch', component: NewBranchComponent},
   {path: 'update-branch', component: UpdateBranchComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -23,6 +23,8 @@ import { AddProductInvComponent } from './shared/add-product-inv/add-product-inv
 import { UpdateProductInvComponent } from './shared/update-product-inv/update-product-inv.component';
 import { UpdateUserComponent } from './shared/update-user/update-user.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
