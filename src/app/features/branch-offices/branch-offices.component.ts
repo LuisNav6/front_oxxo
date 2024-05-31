@@ -22,5 +22,6 @@ export class BranchOfficesComponent {
   actualizarSucursal() {
     this.router.navigate(['/update-branch']);
   }
+  
 
 }

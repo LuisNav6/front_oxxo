@@ -11,11 +11,10 @@ import { UpdateProductComponent } from './shared/update-product/update-product.c
 import { HomeComponent } from './features/home/home.component';
 import { InventoryComponent } from './features/inventory/inventory.component';
 import { CarritoComponent } from './features/carrito/carrito.component';
-import { FooterComponent } from './shared/footer/footer.component';
 import { BarComponent } from './shared/bar/bar.component';
 import { BranchOfficesComponent } from './features/branch-offices/branch-offices.component';
 import { ReportsComponent } from './features/reports/reports.component';
-import { AuthService } from './shared/auth.service';
+import { AuthService } from './core/auth/auth.service';
 import { UsuariosComponent } from './features/usuarios/usuarios.component';
 import { NewBranchComponent } from './shared/new-branch/new-branch.component';
 import { UpdateBranchComponent } from './shared/update-branch/update-branch.component';
@@ -36,7 +35,6 @@ import { UpdateUserComponent } from './shared/update-user/update-user.component'
     HomeComponent,
     InventoryComponent,
     CarritoComponent,
-    FooterComponent,
     BarComponent,
     BranchOfficesComponent,
     ReportsComponent,
