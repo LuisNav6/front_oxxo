@@ -1,26 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IUser } from 'src/app/core/users/users';
+import { UsersService } from 'src/app/core/users/users.service';
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.css']
 })
-export class UsuariosComponent {
+export class UsuariosComponent implements OnInit{
 
-  usuarios = [
-    {nombre: 'nombre 1', apellido: "apellido 1", email: 'x@gmail.com', tel: '1234567890', rol: 'soporte', branch: 's1'},
-    {nombre: 'nombre 2', apellido: "apellido 2", email: 'y@gmail.com', tel: '1234567890', rol: 'admin', branch: 's2'},
-    {nombre: 'nombre 3', apellido: "apellido 3", email: 'z@gmail.com', tel: '1234567890', rol: 'cajero', branch: 's3'}
-  ];
+  usuarios: IUser [] = [];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userService: UsersService) { }
+
+  ngOnInit() {
+    this.loadUsers();
+  }
+
+  async loadUsers(){
+    this.usuarios = await this.userService.findAll();
+    console.log(this.usuarios);
+  }
 
   crearUsuario() {
     this.router.navigate(['/signup']);
   }
   
-  actualizarUsuario() {
-    this.router.navigate(['/update-user']);
+  actualizarUsuario(user: IUser) {
+    this.router.navigate(['/update-user'], { state: { user } });
+  }
+
+  async eliminarUsuario(id:string){
+    await this.userService.delete(id);
+    location.reload();
   }
 
 }

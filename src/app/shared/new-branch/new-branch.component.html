@@ -7,7 +7,7 @@
       <div class="card-body text-center">
         <h2 class="card-title">Crear Sucursal</h2>
         <br>
-        <form [formGroup]="SucursalForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="sucursalForm" (ngSubmit)="onSubmit()">
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="nombre" placeholder="sucursal" formControlName="nombre">
             <label for="nombre">Nombre</label>
@@ -31,17 +31,7 @@
             <input type="text" class="form-control" id="tel" placeholder="sucursal" formControlName="tel">
             <label for="tel">Télefono</label>
           </div>
-
-          <div class="form-floating mb-3">
-            <select class="form-select" id="admin" aria-label="select rol" formControlName="admin">
-              <option selected disabled>Elige tu Adminstrador</option>
-              <option value="admin1">Admin1</option>
-              <option value="admin2">Admin2</option>
-              <option value="admin3">admin3</option>
-            </select>
-            <label for="admin">Adminstrador</label>
-          </div>
-          <button type="submit" class="btn btn-outline-info" [disabled]="!SucursalForm.valid">Crear sucursal</button>
+          <button type="submit" class="btn btn-outline-info" [disabled]="!sucursalForm.valid">Crear sucursal</button>
         </form>
       </div>
     </div>

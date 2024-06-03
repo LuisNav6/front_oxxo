@@ -7,31 +7,19 @@
       <div class="card-body text-center">
         <h2 class="card-title">Actualizar Producto</h2>
         <br>
-        <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nombre" placeholder="producto" formControlName="nombre">
-            <label for="nombre">Nombre</label>
+            <select class="form-select" id="product" aria-label="select product" formControlName="product_id" standalone>
+              <option selected disabled>Elige el producto</option>
+              <option *ngFor="let product of products" [value]="product._id">{{ product.name }}</option>
+            </select>
+            <label for="product">Producto</label>
           </div>
-          <div class="form-group my-3">
-            <label for="precio">Precio</label>
-            <div class="input-group my-3">
-                <span class="input-group-text">$</span>
-                <input type="text" id="precio" class="form-control" aria-label="Amount (to the nearest dollar)" formControlName="precio" required>
-                <span class="input-group-text">.00</span>
-            </div>
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput" placeholder="quantity" formControlName="quantity">
+            <label for="floatingInput">Cantidad</label>
           </div>
-  
-          <div class="form-floating my-3">
-            <textarea class="form-control" placeholder="Leave a comment here" id="descripcion" formControlName="descripcion"></textarea>
-            <label for="descripcion">Descripción</label>
-          </div>
-
-          <div class="my-3">
-            <label for="foto" class="form-label">Foto</label>
-            <input class="form-control" type="file" id="foto" formControlName="foto" required>
-          </div>
-  
-          <button type="submit" class="btn btn-outline-info" [disabled]="!productoForm.valid">Actualizar producto</button>
+          <button type="submit" class="btn btn-outline-info">Actualizar producto</button>
         </form>
       </div>
     </div>

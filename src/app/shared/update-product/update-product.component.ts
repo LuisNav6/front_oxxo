@@ -1,29 +1,51 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ProductService } from '../../core/products/products.service';
+import { UpdateProductDto } from 'src/app/core/products/updateProduct.dto';
+
 @Component({
   selector: 'app-update-product',
   templateUrl: './update-product.component.html',
   styleUrls: ['./update-product.component.css']
 })
 export class UpdateProductComponent {
-
-producto = {
-  nombre: 'Nombre del producto',
-  precio: 'Precio del producto',
-  descripcion: 'Descripción del producto',
-  foto: 'URL de la foto del producto'
-};
-
+  producto = this.router.getCurrentNavigation()?.extras.state?.["producto"];
+  
   productoForm = this.fb.group({
-    nombre: [this.producto.nombre, Validators.required],
-    precio: [this.producto.precio, Validators.required],
-    descripcion: [this.producto.descripcion, Validators.required],
-    foto: [this.producto.foto, Validators.required]
+    nombre: [this.producto.name, Validators.required],
+    precio: [this.producto.price, Validators.required],
+    descripcion: [this.producto.description, Validators.required],
+    foto: [null, Validators.required]
   });
 
-  constructor(private fb: FormBuilder) {}
+  photoFile: File | null = null;
 
-  onSubmit(): void {
-    console.log(this.productoForm.value);
+  constructor(private fb: FormBuilder, private router: Router, private productService: ProductService) {}
+
+  onFileChange(event: any) {
+    if (event.target.files.length > 0) {
+      this.photoFile = event.target.files[0];
+    }
+  }
+
+  async onSubmit(): Promise<void> {
+    if (this.productoForm.valid) {
+      const updateProductDto: UpdateProductDto = {
+        name: this.productoForm.get('nombre')?.value,
+        price: Number(parseFloat(this.productoForm.get('precio')?.value).toFixed(2)),
+        description: this.productoForm.get('descripcion')?.value,
+        photo: this.photoFile as File
+      };
+
+      try {
+        console.log(updateProductDto);
+        const updatedProduct = await this.productService.update(this.producto._id, updateProductDto);
+        console.log('Producto actualizado:', updatedProduct);
+        this.router.navigate(['/products']);
+      } catch (error) {
+        console.error('Error al actualizar el producto:', error);
+      }
+    }
   }
 }

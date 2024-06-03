@@ -20,16 +20,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let producto of productos">
-        <td>{{producto.id}}</td>
-      <td>{{producto.nombre}}</td>
-      <td>{{producto.precio}}</td>
-      <td>{{producto.descripcion}}</td>
+    <tr *ngFor="let producto of products; ; let i = index">
+      <td>{{producto._id}}</td>
+      <td>{{producto.name}}</td>
+      <td>{{producto.price}}</td>
+      <td>{{producto.description}}</td>
       <td>{{producto.photo}}</td>
-      <td>{{producto.cantidad}}</td>
+      <td>{{quantities[i]}}</td>
       <td>
-        <button class="btn btn-outline-warning mx-4" title="Actualizar producto" (click)="actualizarProducto()"><i class="fa-regular fa-pen-to-square"></i></button>
-        <button class="btn btn-outline-danger" title="Eliminar producto"><i class="fa-regular fa-trash-can"></i></button>
+        <button class="btn btn-outline-warning mx-4" title="Actualizar producto" (click)="actualizarProducto(producto._id,quantities[i])"><i class="fa-regular fa-pen-to-square"></i></button>
       </td>
     </tr>
   </tbody>

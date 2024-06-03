@@ -10,26 +10,24 @@
 <table class="table table-hover text-center">
   <thead>
     <tr>
-      <th>Nombre de la sucursal</th>
+      <th>Nombre</th>
       <th>Dirección</th>
       <th>Código postal</th>
       <th>RFC</th>
       <th>Teléfono</th>
-      <th>Administrador</th>
       <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let sucursal of sucursales">
-      <td>{{sucursal.nombre}}</td>
+    <tr *ngFor="let sucursal of branches">
+      <td>{{sucursal.name}}</td>
       <td>{{sucursal.location}}</td>
       <td>{{sucursal.CP}}</td>
       <td>{{sucursal.RFC}}</td>
       <td>{{sucursal.tel}}</td>
-      <td>{{sucursal.admin}}</td>
       <td>
-        <button class="btn btn-outline-warning mx-4" title="Actualizar producto" (click)="actualizarSucursal()"><i class="fa-regular fa-pen-to-square"></i></button>
-        <button class="btn btn-outline-danger" title="Eliminar producto"><i class="fa-regular fa-trash-can"></i></button>
+        <button class="btn btn-outline-warning mx-4" title="Actualizar producto" (click)="actualizarSucursal(sucursal)"><i class="fa-regular fa-pen-to-square"></i></button>
+        <button class="btn btn-outline-danger" title="Eliminar producto" (click)="deleteBranch(sucursal._id)"><i class="fa-regular fa-trash-can"></i></button>
       </td>
     </tr>
   </tbody>

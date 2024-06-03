@@ -31,16 +31,6 @@
             <input type="text" class="form-control" id="tel" placeholder="sucursal" formControlName="tel">
             <label for="tel">Télefono</label>
           </div>
-
-          <div class="form-floating mb-3">
-            <select class="form-select" id="admin" aria-label="select rol" formControlName="admin">
-              <option selected disabled>Elige tu Adminstrador</option>
-              <option value="admin1">Admin1</option>
-              <option value="admin2">Admin2</option>
-              <option value="admin3">admin3</option>
-            </select>
-            <label for="admin">Adminstrador</label>
-          </div>
           <button type="submit" class="btn btn-outline-info" [disabled]="!SucursalForm.valid">Actualizar sucursal</button>
         </form>
       </div>

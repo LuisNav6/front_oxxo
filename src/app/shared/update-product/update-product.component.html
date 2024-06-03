@@ -28,7 +28,7 @@
 
           <div class="my-3">
             <label for="foto" class="form-label">Foto</label>
-            <input class="form-control" type="file" id="foto" formControlName="foto" required>
+            <input class="form-control" type="file" id="foto" formControlName="foto" (change)="onFileChange($event)" required>
           </div>
   
           <button type="submit" class="btn btn-outline-info" [disabled]="!productoForm.valid">Actualizar producto</button>

@@ -20,14 +20,14 @@
   </thead>
   <tbody>
     <tr *ngFor="let usuario of usuarios">
-      <td>{{usuario.nombre}} {{usuario.apellido}}</td>
+      <td>{{usuario.name}} {{usuario.last_name}}</td>
       <td>{{usuario.email}}</td>
       <td>{{usuario.tel}}</td>
       <td>{{usuario.rol}}</td>
-      <td>{{usuario.branch}}</td>
+      <td>{{usuario.branch_id}}</td>
       <td>
-        <button class="btn btn-outline-warning mx-4" title="Actualizar producto" (click)="actualizarUsuario()"><i class="fa-regular fa-pen-to-square"></i></button>
-        <button class="btn btn-outline-danger" title="Eliminar producto"><i class="fa-regular fa-trash-can"></i></button>
+        <button class="btn btn-outline-warning mx-4" title="Actualizar producto" (click)="actualizarUsuario(usuario)"><i class="fa-regular fa-pen-to-square"></i></button>
+        <button class="btn btn-outline-danger" title="Eliminar producto" (click)="eliminarUsuario(usuario._id)"><i class="fa-regular fa-trash-can"></i></button>
       </td>
     </tr>
   </tbody>

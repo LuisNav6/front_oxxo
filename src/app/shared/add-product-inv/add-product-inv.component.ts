@@ -1,21 +1,80 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProductService } from '../../core/products/products.service';
+import { Router } from '@angular/router';
+import { InventoryService } from 'src/app/core/inventory/inventory.service';
+import { IProduct } from 'src/app/core/products/products';
+import { IInventory } from 'src/app/core/inventory/inventory';
+import { UpdateInventoryDto, UpdateInventoryItemDto } from '../../core/inventory/updateInventory.dto';
+
 @Component({
   selector: 'app-add-product-inv',
   templateUrl: './add-product-inv.component.html',
   styleUrls: ['./add-product-inv.component.css']
 })
-export class AddProductInvComponent {
-  productoForm = this.fb.group({
-    nombre: ['', Validators.required],
-    precio: ['', Validators.required],
-    descripcion: ['', Validators.required],
-    foto: ['', Validators.required]
-  });
+export class AddProductInvComponent implements OnInit {
+  products: IProduct[] = [];
+  branchOfficeId: string | null = null;
+  inventory: IInventory | null = null;
+  productForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private inventoryService: InventoryService,
+    private productsService: ProductService,
+    private router: Router
+  ) {
+    this.productForm = this.fb.group({
+      product_id: ['', Validators.required],
+      quantity: [0, [Validators.required, Validators.min(1)]]
+    });
+  }
 
-  onSubmit(): void {
-    console.log(this.productoForm.value);
+  ngOnInit(): void {
+    const userProfile = JSON.parse(localStorage.getItem('userProfile') || '{}'); // Obtener userProfile del local storage
+    this.branchOfficeId = userProfile.branch_id;
+    this.loadProducts();
+    if (this.branchOfficeId) {
+      this.loadInventory(this.branchOfficeId);
+    } else {
+      console.error('No branch_office_id found in local storage');
+    }
+  }
+
+  async loadInventory(id: string) {
+    this.inventory = await this.inventoryService.findByBranchId(id);
+  }
+
+  async loadProducts() {
+    this.products = await this.productsService.findAll();
+  }
+
+  async onSubmit(): Promise<void> {
+    if (this.productForm.invalid) {
+      return;
+    }
+
+    const { product_id, quantity } = this.productForm.value;
+
+    const newInventoryItem: UpdateInventoryItemDto = {
+      product_id,
+      quantity
+    };
+
+    if (this.inventory && this.branchOfficeId) {
+      const updateInventoryDto: UpdateInventoryDto = {
+        branch_office_id: this.branchOfficeId,
+        inventory: [...this.inventory.inventory, newInventoryItem]
+      };
+      try {
+        await this.inventoryService.update(this.inventory._id, updateInventoryDto);
+        console.log('Inventario actualizado con éxito');
+        this.router.navigate(['/inventario']); 
+      } catch (error) {
+        console.error('Error actualizando el inventario:', error);
+      }
+    } else {
+      console.error('Inventario no cargado o branchOfficeId no definido');
+    }
   }
 }

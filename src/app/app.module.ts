@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './features/login/login.component';
@@ -21,7 +21,8 @@ import { UpdateBranchComponent } from './shared/update-branch/update-branch.comp
 import { AddProductInvComponent } from './shared/add-product-inv/add-product-inv.component';
 import { UpdateProductInvComponent } from './shared/update-product-inv/update-product-inv.component';
 import { UpdateUserComponent } from './shared/update-user/update-user.component';
-
+import { FooterComponent } from './shared/footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { UpdateUserComponent } from './shared/update-user/update-user.component'
     InventoryComponent,
     CarritoComponent,
     BarComponent,
+    FooterComponent,
     BranchOfficesComponent,
     ReportsComponent,
     UsuariosComponent,
@@ -48,7 +50,9 @@ import { UpdateUserComponent } from './shared/update-user/update-user.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     AuthService

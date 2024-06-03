@@ -46,6 +46,9 @@ export class LoginComponent implements OnInit {
     } else {
       console.error('Formulario inválido');
     }
+    if(this.loginForm.value.username == "gandhi@gmail.com")
+    this.router.navigate(['/reportes']);
+    else
     this.router.navigate(['/home']);
   }
 }
