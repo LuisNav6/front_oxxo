@@ -23,6 +23,7 @@ import { UpdateProductInvComponent } from './shared/update-product-inv/update-pr
 import { UpdateUserComponent } from './shared/update-user/update-user.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DefaultComponent } from './features/default/default/default.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { HttpClientModule } from '@angular/common/http';
     UpdateBranchComponent,
     AddProductInvComponent,
     UpdateProductInvComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    DefaultComponent
   ],
   imports: [
     BrowserModule,

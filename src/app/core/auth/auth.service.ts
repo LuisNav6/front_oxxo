@@ -41,4 +41,8 @@ export class AuthService {
   private handleError(error: any): void {
     console.error('Error en la petición HTTP:', error);
   }
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('userProfile');
+  }
 }

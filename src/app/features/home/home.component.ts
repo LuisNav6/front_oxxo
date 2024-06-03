@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   products: IProduct[] = []; // Array para almacenar los datos de los productos
   branchOfficeId: string | null = null;
-  quantities: any[] = [];
+  quantities: { [productId: string]: number } = {};
 
   constructor(private inventoryService: InventoryService, private productService: ProductService) { }
 
@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
       for (const inventory of inventories) {
         for (const item of inventory.inventory) {
           const product: IProduct = await this.productService.findById(item.product_id);
-          this.quantities.push(item.quantity);
+          this.quantities[item.product_id] = item.quantity;
           console.log(this.quantities);
 
           // Convertir el precio si es un objeto
@@ -45,13 +45,6 @@ export class HomeComponent implements OnInit {
               product.price = parseFloat(priceObject.$numberDecimal).toFixed(2); // Convierte a número
             }
           }
-
-          // Modificar la URL de la foto del producto
-          const regex = /^(https:\/\/drive\.google\.com\/uc\?id=)(.+)$/;
-          if (product.photo && regex.test(product.photo)) {
-            product.photo = product.photo.replace(regex, 'https://drive.google.com/thumbnail?id=$2');
-          }
-
           this.products.push(product);
         }
       }
@@ -63,6 +56,22 @@ export class HomeComponent implements OnInit {
   }
 
   addToCart(product: IProduct) {
+    const productId = product._id;
+    const availableQuantity = this.quantities[productId];
+
+    if (availableQuantity <= 0) {
+      alert(`No hay inventario disponible para el producto ${product.name}`);
+      return;
+    }
+
+    let cart: { id: string, price: number | String }[] = JSON.parse(localStorage.getItem('cart') || '[]');
+    const cartQuantity = cart.filter(item => item.id === productId).length;
+
+    if (cartQuantity >= availableQuantity) {
+      alert(`No hay suficiente inventario para el producto ${product.name}`);
+      return;
+    }
+
     // Convertir el precio si es un objeto
     if (typeof product.price === 'object' && product.price !== null) {
       const priceObject = product.price as { $numberDecimal: string };
@@ -71,8 +80,7 @@ export class HomeComponent implements OnInit {
       }
     }
 
-    let cart: { id: string, price: number | String}[] = JSON.parse(localStorage.getItem('cart') || '[]');
-    cart.push({ id: product._id, price: product.price });
+    cart.push({ id: productId, price: product.price });
     localStorage.setItem('cart', JSON.stringify(cart));
   }
 }

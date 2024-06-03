@@ -16,26 +16,30 @@ import { UpdateProductInvComponent } from './shared/update-product-inv/update-pr
 import { NewBranchComponent } from './shared/new-branch/new-branch.component';
 import { UpdateBranchComponent } from './shared/update-branch/update-branch.component';
 import { UpdateUserComponent } from './shared/update-user/update-user.component';
+import { AuthGuard } from './core/auth/guard/auth.guard';
+import { DefaultComponent } from './features/default/default/default.component';
 
 const routes: Routes = [
+  {path: 'default', component: DefaultComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignUpComponent },
-  { path: 'update-user', component: UpdateUserComponent },
-  { path: 'products', component: ProductsComponent},
-  { path: 'new-product', component: NewProductComponent},
-  { path: 'update-product', component: UpdateProductComponent },
-  { path: 'home', component: HomeComponent},
-  { path: 'productos', component: ProductsComponent},
-  { path: 'sucursales', component: BranchOfficesComponent},
-  { path: 'inventario', component: InventoryComponent},
-  { path: 'reportes', component: ReportsComponent},
-  { path: 'usuarios', component: UsuariosComponent},
-  { path: 'carrito', component: CarritoComponent},
-  {path: 'add-product-inventory', component: AddProductInvComponent},
-  {path: 'update-product-inventory', component: UpdateProductInvComponent},
-  {path: 'new-branch', component: NewBranchComponent},
-  {path: 'update-branch', component: UpdateBranchComponent},
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  { path: 'signup', component: SignUpComponent, canActivate: [AuthGuard] },
+  { path: 'update-user', component: UpdateUserComponent, canActivate: [AuthGuard]},
+  { path: 'products', component: ProductsComponent, canActivate: [AuthGuard]},
+  { path: 'new-product', component: NewProductComponent, canActivate: [AuthGuard]},
+  { path: 'update-product', component: UpdateProductComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  { path: 'productos', component: ProductsComponent, canActivate: [AuthGuard]},
+  { path: 'sucursales', component: BranchOfficesComponent, canActivate: [AuthGuard]},
+  { path: 'inventario', component: InventoryComponent, canActivate: [AuthGuard]},
+  { path: 'reportes', component: ReportsComponent, canActivate: [AuthGuard]},
+  { path: 'usuarios', component: UsuariosComponent, canActivate: [AuthGuard]},
+  { path: 'carrito', component: CarritoComponent, canActivate: [AuthGuard]},
+  {path: 'add-product-inventory', component: AddProductInvComponent, canActivate: [AuthGuard]},
+  {path: 'update-product-inventory', component: UpdateProductInvComponent, canActivate: [AuthGuard]},
+  {path: 'new-branch', component: NewBranchComponent, canActivate: [AuthGuard]},
+  {path: 'update-branch', component: UpdateBranchComponent, canActivate: [AuthGuard]},
+  { path: '', redirectTo: '/default', pathMatch: 'full' },
+  { path: '**', redirectTo: '/default' }
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

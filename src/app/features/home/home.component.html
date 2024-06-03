@@ -2,7 +2,7 @@
 <div class="container shadow">
     <div class="row">
       <div class="col-md-4" *ngFor="let product of products">
-        <div class="card mb-4 text-center">
+        <div class="card mb-4 text-center" *ngIf="quantities[product._id] > 0">
           <img class="card-img-top" [src]="product.photo" alt="{{product.name}}">
           <div class="card-body">
             <h5 class="card-title">{{product.name}}</h5>
