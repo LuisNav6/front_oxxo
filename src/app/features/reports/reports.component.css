@@ -8,3 +8,11 @@
     width: 100%;
     position: relative;
 }
+
+img{
+    width: 200px;
+}
+
+h4{
+    color: rgb(14, 199, 14);
+}

@@ -15,7 +15,10 @@ export class UsersService {
 
   async findAll(): Promise<IUser[]> {
     try {
-      const response = await axios.get<IUser[]>(this.baseUrl);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.get<IUser[]>(this.baseUrl, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);
@@ -24,7 +27,10 @@ export class UsersService {
 
   async findOne(id: string): Promise<IUser> {
     try {
-      const response = await axios.get<IUser>(`${this.baseUrl}/${id}`);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.get<IUser>(`${this.baseUrl}/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);
@@ -33,7 +39,10 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto): Promise<IUser> {
     try {
-      const response = await axios.post<IUser>(`${this.baseUrl}/create-account`, createUserDto);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.post<IUser>(`${this.baseUrl}/create-account`, createUserDto, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);
@@ -42,7 +51,10 @@ export class UsersService {
 
   async update(id: string, updateUserDto: UpdateUserDto): Promise<IUser> {
     try {
-      const response = await axios.put<IUser>(`${this.baseUrl}/${id}`, updateUserDto);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.put<IUser>(`${this.baseUrl}/${id}`, updateUserDto, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);
@@ -51,7 +63,10 @@ export class UsersService {
 
   async delete(id: string): Promise<IUser> {
     try {
-      const response = await axios.delete<IUser>(`${this.baseUrl}/${id}`);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.delete<IUser>(`${this.baseUrl}/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);

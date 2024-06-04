@@ -16,7 +16,12 @@ export class ProductService {
 
   async findAll(): Promise<IProduct[]> {
     try {
-      const response = await axios.get<IProduct[]>(this.baseUrl);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.get<IProduct[]>(this.baseUrl, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       return response.data;
     } catch (error) {
       this.handleError(error);
@@ -25,7 +30,12 @@ export class ProductService {
 
   async findById(id: string): Promise<IProduct> {
     try {
-      const response = await axios.get<IProduct>(`${this.baseUrl}/${id}`);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.get<IProduct>(`${this.baseUrl}/${id}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       return response.data;
     } catch (error) {
       this.handleError(error);
@@ -34,6 +44,7 @@ export class ProductService {
 
   async create(createProductDto: CreateProductDto): Promise<IProduct> {
     try {
+      const token = localStorage.getItem('jwtToken');
       const formData = new FormData();
       formData.append('name', createProductDto.name || "");
       formData.append('price', createProductDto.price?.toFixed(2) || "");
@@ -44,7 +55,8 @@ export class ProductService {
 
       const response = await axios.post<IProductResponse>(this.baseUrl, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}`
         }
       });
 
@@ -56,6 +68,7 @@ export class ProductService {
 
   async update(id: string, updateProductDto: UpdateProductDto): Promise<IProduct> {
     try {
+      const token = localStorage.getItem('jwtToken');
       const formData = new FormData();
       if (updateProductDto.name) formData.append('name', updateProductDto.name);
       if (updateProductDto.price) formData.append('price', updateProductDto.price.toFixed(2));
@@ -64,7 +77,8 @@ export class ProductService {
 
       const response = await axios.put<IProductResponse>(`${this.baseUrl}/${id}`, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}`
         }
       });
 
@@ -76,7 +90,12 @@ export class ProductService {
 
   async delete(id: string): Promise<void> {
     try {
-      await axios.delete(`${this.baseUrl}/${id}`);
+      const token = localStorage.getItem('jwtToken');
+      await axios.delete(`${this.baseUrl}/${id}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
     } catch (error) {
       this.handleError(error);
     }

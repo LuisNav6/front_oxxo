@@ -14,7 +14,10 @@ export class InventoryService {
 
   async findAll(): Promise<IInventory[]> {
     try {
-      const response = await axios.get<IInventory[]>(this.baseUrl);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.get<IInventory[]>(this.baseUrl, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);
@@ -23,7 +26,10 @@ export class InventoryService {
 
   async findOne(id: string): Promise<IInventory> {
     try {
-      const response = await axios.get<IInventory>(`${this.baseUrl}/${id}`);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.get<IInventory>(`${this.baseUrl}/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);
@@ -32,7 +38,10 @@ export class InventoryService {
 
   async findAllByBranchId(branchId: string): Promise<IInventory[]> {
     try {
-      const response = await axios.get<IInventory[]>(`${this.baseUrl}/branches/${branchId}`);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.get<IInventory[]>(`${this.baseUrl}/branches/${branchId}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);
@@ -41,7 +50,10 @@ export class InventoryService {
 
   async findByBranchId(branchId: string): Promise<IInventory> {
     try {
-      const response = await axios.get<IInventory>(`${this.baseUrl}/branch/${branchId}`);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.get<IInventory>(`${this.baseUrl}/branch/${branchId}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);
@@ -49,7 +61,10 @@ export class InventoryService {
   }
   async create(createInventoryDto: CreateInventoryDto): Promise<IInventory> {
     try {
-      const response = await axios.post<IInventory>(this.baseUrl, createInventoryDto);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.post<IInventory>(this.baseUrl, createInventoryDto, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);
@@ -58,7 +73,10 @@ export class InventoryService {
 
   async update(id: string, updateInventoryDto: UpdateInventoryDto): Promise<IInventory> {
     try {
-      const response = await axios.put<IInventory>(`${this.baseUrl}/${id}`, updateInventoryDto);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.put<IInventory>(`${this.baseUrl}/${id}`, updateInventoryDto, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);
@@ -67,7 +85,10 @@ export class InventoryService {
 
   async delete(id: string): Promise<IInventory> {
     try {
-      const response = await axios.delete<IInventory>(`${this.baseUrl}/${id}`);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.delete<IInventory>(`${this.baseUrl}/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);

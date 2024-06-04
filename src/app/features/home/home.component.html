@@ -1,16 +1,18 @@
 <app-bar></app-bar>
 <div class="container shadow">
-    <div class="row">
-      <div class="col-md-4" *ngFor="let product of products">
-        <div class="card mb-4 text-center" *ngIf="quantities[product._id] > 0">
-          <img class="card-img-top" [src]="product.photo" alt="{{product.name}}">
-          <div class="card-body">
-            <h5 class="card-title">{{product.name}}</h5>
-            <p class="card-text">{{product.description}}</p>
-            <p class="card-text"><strong>Precio: ${{product.price}}</strong></p>
-            <a class="btn btn-outline-info" (click)="addToCart(product)">Comprar</a>
-          </div>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let product of products">
+      <div class="card mb-4 text-center" *ngIf="quantities[product._id] > 0">
+        <div class="d-flex justify-content-center align-items-start">
+          <img class="card-img-top" [src]="product.photo" alt="{{product.name}}" style="width: 200px; height: 200px;">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">{{product.description}}</p>
+          <p class="card-text"><strong>Precio: ${{product.price}}</strong></p>
+          <a class="btn btn-outline-info" (click)="addToCart(product)">Comprar</a>
         </div>
       </div>
     </div>
   </div>
+</div>

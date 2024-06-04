@@ -13,7 +13,10 @@ export class SalesService {
 
   async findAll(): Promise<ISales[]> {
     try {
-      const response = await axios.get<ISales[]>(this.baseUrl);
+    const token = localStorage.getItem('jwtToken');
+      const response = await axios.get<ISales[]>(this.baseUrl, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);
@@ -22,7 +25,21 @@ export class SalesService {
 
   async findOne(id: string): Promise<ISales> {
     try {
-      const response = await axios.get<ISales>(`${this.baseUrl}/${id}`);
+const token = localStorage.getItem('jwtToken');
+      const response = await axios.get<ISales>(`${this.baseUrl}/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      return response.data;
+    } catch (error) {
+      return this.handleError(error);
+    }
+  }
+  async findByBranchOffice(branch_office_id: string): Promise<ISales[]> {
+    try {
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.get<ISales[]>(`${this.baseUrl}/byBranchOffice/${branch_office_id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);
@@ -31,7 +48,10 @@ export class SalesService {
 
   async create(createSaleDto: CreateSaleDto): Promise<ISales> {
     try {
-      const response = await axios.post<ISales>(this.baseUrl, createSaleDto);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.post<ISales>(this.baseUrl, createSaleDto, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);

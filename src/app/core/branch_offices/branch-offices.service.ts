@@ -15,7 +15,10 @@ export class BranchOfficesService {
 
   async findAll(): Promise<IBranch_Office[]> {
     try {
-      const response = await axios.get<IBranch_Office[]>(this.baseUrl);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.get<IBranch_Office[]>(this.baseUrl, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);
@@ -24,7 +27,10 @@ export class BranchOfficesService {
 
   async findOne(id: string): Promise<IBranch_Office> {
     try {
-      const response = await axios.get<IBranch_Office>(`${this.baseUrl}/${id}`);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.get<IBranch_Office>(`${this.baseUrl}/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);
@@ -33,7 +39,10 @@ export class BranchOfficesService {
 
   async findByBranchId(branchId: string): Promise<IBranch_Office[]> {
     try {
-      const response = await axios.get<IBranch_Office[]>(`${this.baseUrl}/branch/${branchId}`);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.get<IBranch_Office[]>(`${this.baseUrl}/branch/${branchId}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);
@@ -42,7 +51,10 @@ export class BranchOfficesService {
 
   async create(createBranchOfficeDto: CreateBranchOfficeDto): Promise<IBranch_Office> {
     try {
-      const response = await axios.post<IBranch_Office>(this.baseUrl, createBranchOfficeDto);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.post<IBranch_Office>(this.baseUrl, createBranchOfficeDto, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);
@@ -51,7 +63,10 @@ export class BranchOfficesService {
 
   async update(id: string, updateBranchOfficeDto: UpdateBranchOfficeDto): Promise<IBranch_Office> {
     try {
-      const response = await axios.put<IBranch_Office>(`${this.baseUrl}/${id}`, updateBranchOfficeDto);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.put<IBranch_Office>(`${this.baseUrl}/${id}`, updateBranchOfficeDto, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);
@@ -60,7 +75,10 @@ export class BranchOfficesService {
 
   async delete(id: string): Promise<IBranch_Office> {
     try {
-      const response = await axios.delete<IBranch_Office>(`${this.baseUrl}/${id}`);
+      const token = localStorage.getItem('jwtToken');
+      const response = await axios.delete<IBranch_Office>(`${this.baseUrl}/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       return response.data;
     } catch (error) {
       return this.handleError(error);

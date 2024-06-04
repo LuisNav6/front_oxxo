@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
         const response = await this.authService.login(credentials);
         console.log('Login exitoso:', response);
         const profile = await this.authService.getProfile(response.access_token);
+        localStorage.setItem('jwtToken', response.access_token);
         console.log('Perfil:', profile);
         localStorage.setItem('userProfile', JSON.stringify(profile));
       } catch (error) {
