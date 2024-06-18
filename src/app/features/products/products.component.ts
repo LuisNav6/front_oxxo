@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from '../../core/products/products.service'; // Importa el servicio ProductService
 import { IProduct } from 'src/app/core/products/products';
-
+import { PaginatorState } from 'primeng/paginator';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-
-  productos?: IProduct[];
+  first: number = 0;
+  rows: number = 10;
+  productos: IProduct[] = [];
 
   constructor(
     private router: Router,
@@ -50,6 +51,15 @@ export class ProductsComponent implements OnInit {
   }
   async deleteProducto(id: string){
     await this.productService.delete(id);
-    location.reload();
+    this.router.navigate(['/products']);
+  }
+
+  onPageChange(event: PaginatorState) {
+    this.first = event.first ?? 0;
+    this.rows = event.rows ?? 10;
+  }
+
+  paginatedProducts() {
+    return this.productos.slice(this.first, this.first + this.rows);
   }
 }

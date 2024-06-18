@@ -1,10 +1,18 @@
 <app-bar></app-bar>
 <div class="container shadow">
+  <div class="row mb-4">
+    <div class="col-md-12 mb-4">
+      <form class="d-flex mt-5" role="search" (submit)="searchProduct($event)">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" [(ngModel)]="searchTerm" name="searchTerm">
+        <button class="btn btn-outline-info" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
   <div class="row">
-    <div class="col-md-4" *ngFor="let product of products">
-      <div class="card mb-4 text-center" *ngIf="quantities[product._id] > 0">
+    <div class="col-md-4" *ngFor="let product of filteredProducts">
+      <div class="card mb-4 text-center">
         <div class="d-flex justify-content-center align-items-start">
-          <img class="card-img-top" [src]="product.photo" alt="{{product.name}}" style="width: 200px; height: 200px;">
+          <img class="card-img-top" [src]="product.photo" alt="{{product.name}}">
         </div>
         <div class="card-body">
           <h5 class="card-title">{{product.name}}</h5>

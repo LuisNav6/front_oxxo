@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BranchOfficesService } from 'src/app/core/branch_offices/branch-offices.service';
 import { UpdateBranchOfficeDto } from 'src/app/core/branch_offices/updateBranch_offices.dto';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-update-branch',
   templateUrl: './update-branch.component.html',
@@ -34,8 +35,20 @@ export class UpdateBranchComponent {
             console.log(updateBranchDto);
             const updatedBranch = await this.branchOfficesService.update(this.sucursal._id, updateBranchDto);
             console.log('Sucursal actualizado:', updatedBranch);
+            Swal.fire({
+              title: `La sucursal ${updateBranchDto.name}`,
+              text: 'Fue actualizada exitosamente!',
+              icon: 'success',
+              confirmButtonText: 'Cerrar'
+            });
             this.router.navigate(['/sucursales']);
           } catch (error) {
+            Swal.fire({
+              title: `La sucursal ${updateBranchDto.name} no fue actualizado!`,
+              text: 'Revisa tu petición!',
+              icon: 'error',
+              confirmButtonText: 'Cerrar'
+            });
             console.error('Error al actualizar la sucursal:', error);
           }
         }

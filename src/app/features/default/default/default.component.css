@@ -1,9 +1,44 @@
-.container-fluid {
-    background-image: url('../../../../assets//images/background.png');
-
-  }
-  img{
+.back{
+  background: rgb(0,0,0);
+background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(76,135,164,1) 76%, rgba(95,192,201,1) 100%);
+}
+img{
     max-width: 400px;
 }
+
+.card {
+  border-radius: 10px;
+}
+
+h1.display-4 {
+  font-weight: bold;
+  color: #fff;
+}
+
+p.lead {
+  color: #fff;
+}
+
+.card-title {
+  font-weight: bold;
+  color: #fff;
+}
+
+.card-text {
+  color: #fff;
+}
+.bg-feature1 {
+  background-color: #38A3CB;
+}
+
+.bg-feature2 {
+  background-color: #4C87A4;
+}
+
+.bg-feature3 {
+  background-color: #5FC0C9;
+}
+
+
   
   

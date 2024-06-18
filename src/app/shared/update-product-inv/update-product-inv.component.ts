@@ -6,6 +6,7 @@ import { InventoryService } from 'src/app/core/inventory/inventory.service';
 import { IProduct } from 'src/app/core/products/products';
 import { IInventory, IInventoryItem } from 'src/app/core/inventory/inventory';
 import { UpdateInventoryDto, UpdateInventoryItemDto } from '../../core/inventory/updateInventory.dto';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-update-product-inv',
   templateUrl: './update-product-inv.component.html',
@@ -88,8 +89,20 @@ export class UpdateProductInvComponent implements OnInit{
         console.log(this.updateInventoryDto);
         await this.inventoryService.update(this.inventory._id, this.updateInventoryDto);
         console.log('Inventario actualizado con éxito');
+        Swal.fire({
+          title: 'El producto fue actualizado en tu inventario!',
+          text: '',
+          icon: 'success',
+          confirmButtonText: 'Cerrar'
+        });
         this.router.navigate(['/inventario']); 
       } catch (error) {
+        Swal.fire({
+          title: 'El producto no pudo ser actualizado!',
+          text: 'Revisa tu petición.',
+          icon: 'error',
+          confirmButtonText: 'Cerrar'
+        });
         console.error('Error actualizando el inventario:', error);
       }
     } else {

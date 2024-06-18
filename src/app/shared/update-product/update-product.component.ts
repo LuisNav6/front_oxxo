@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductService } from '../../core/products/products.service';
 import { UpdateProductDto } from 'src/app/core/products/updateProduct.dto';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-update-product',
   templateUrl: './update-product.component.html',
@@ -42,8 +42,20 @@ export class UpdateProductComponent {
         console.log(updateProductDto);
         const updatedProduct = await this.productService.update(this.producto._id, updateProductDto);
         console.log('Producto actualizado:', updatedProduct);
+        Swal.fire({
+          title: `El producto ${updateProductDto.name}`,
+          text: 'Fue actualizado exitosamente!',
+          icon: 'success',
+          confirmButtonText: 'Cerrar'
+        });
         this.router.navigate(['/products']);
       } catch (error) {
+        Swal.fire({
+          title: 'El producto no pudo ser actualizado!',
+          text: 'Revisa tu petición.',
+          icon: 'error',
+          confirmButtonText: 'Cerrar'
+        });
         console.error('Error al actualizar el producto:', error);
       }
     }

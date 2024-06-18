@@ -22,9 +22,12 @@
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "chart.js": "^4.4.3",
     "jquery": "^3.7.1",
     "ng": "^0.0.0",
+    "primeng": "^16.9.1",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.11.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
@@ -39,6 +42,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "typescript": "~5.0.2"
+    "typescript": "~5.0.2",
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }

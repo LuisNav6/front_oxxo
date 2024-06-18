@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ProductService } from '../../core/products/products.service';
 import { CreateProductDto } from '../../core/products/createProduct.dto';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-new-product',
   templateUrl: './new-product.component.html',
@@ -47,8 +47,20 @@ export class NewProductComponent {
       try {
         await this.productService.create(createProductDto);
         console.log('Producto creado exitosamente');
+        Swal.fire({
+          title: 'Producto creado exitosamente!',
+          text: '',
+          icon: 'success',
+          confirmButtonText: 'Cerrar'
+        });
         this.router.navigate(['/products']);
       } catch (error) {
+        Swal.fire({
+          title: 'No se pudo crear el producto!',
+          text: 'Revisa tu petición.',
+          icon: 'error',
+          confirmButtonText: 'Cerrar'
+        });
         console.error('Error al crear el producto:', error);
       }
     } else {

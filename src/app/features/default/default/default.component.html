@@ -1,9 +1,21 @@
-<div class="container-fluid vh-100 d-flex flex-column justify-content-center align-items-center">
-    <div class="text-center"> 
-        <img src="../../../../assets/images/logo_white.png" alt="Imagen" class="img-fluid">
-      </div>
-    <h1 class="display-4 text-center mb-4">Bienvenido a Salesoft</h1>
-    <p class="lead text-center mb-5">Somos una empresa dedicada a brindar soluciones integrales para tu negocio.</p>
-    <button class="btn btn-lg btn-outline-info mt-4" (click)="redirect()">Iniciar sesión</button>
+<div class="back">
+  <div class="text-center mb-5">
+      <img src="../../../../assets/images/logo.png" alt="Bienvenida" class="img-fluid mb-4">
+      <h1 class="display-4">{{ title }}</h1>
+      <p class="lead">{{ description }}</p>
   </div>
-  
+  <div class="row mt-5 mb-5">
+      <div class="col-md-4" *ngFor="let feature of features">
+          <div [ngClass]="{'card': true, 'h-100': true, 'text-center': true, 'p-3': true, 'shadow-sm': true, 'border-0': true, 'bg-feature1': feature.color === '#38A3CB', 'bg-feature2': feature.color === '#4C87A4', 'bg-feature3': feature.color === '#5FC0C9'}">
+              <div class="card-body">
+                  <i [class]="feature.icon + ' feature-icon mb-3'" style="font-size: 3rem;"></i>
+                  <h5 class="card-title">{{ feature.title }}</h5>
+                  <p class="card-text">{{ feature.description }}</p>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="text-center">
+      <button type="button" class="btn btn-outline-info mt-5 mb-5" (click)="redirect()">Iniciar Sesión</button>
+  </div>
+</div>

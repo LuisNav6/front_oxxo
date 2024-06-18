@@ -5,6 +5,7 @@ import { BranchOfficesService } from 'src/app/core/branch_offices/branch-offices
 import { IBranch_Office } from 'src/app/core/branch_offices/branch_offices';
 import { CreateUserDto } from 'src/app/core/users/createUser.dto';
 import { UsersService } from 'src/app/core/users/users.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -53,9 +54,21 @@ export class SignUpComponent implements OnInit{
       this.userService.create(user)
         .then((response) => {
           console.log('Nuevo usuario creado:', response);
+          Swal.fire({
+            title: 'Usuario creado exitosamente!',
+            text: '',
+            icon: 'success',
+            confirmButtonText: 'Cerrar'
+          });
           this.router.navigate(['/usuarios']);
         })
         .catch((error) => {
+          Swal.fire({
+            title: `No se pudo crear el usuario!`,
+            text: 'Revisa tu petición.',
+            icon: 'error',
+            confirmButtonText: 'Cerrar'
+          });
           console.error('Error al crear al usuario:', error);
         });
     }

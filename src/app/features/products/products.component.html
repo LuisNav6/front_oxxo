@@ -1,7 +1,7 @@
 <app-bar></app-bar>
 <div class="container shadow">
         <div class="my-3 text-center mb-4">
-            <img src="../../../assets/images/logo_white.png" alt="Imagen" class="img-fluid">
+            <img src="../../../assets/images/logo_white.png" alt="Imagen" class="img-fluid" id="logo">
         </div>
         <h3 class="text-center">Productos</h3>
         <div class="my-3 d-flex justify-content-center">
@@ -19,12 +19,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let producto of productos">
+        <tr *ngFor="let producto of paginatedProducts()">
           <td>{{producto._id}}</td>
           <td>{{producto.name}}</td>
           <td>{{producto.price}}</td>
           <td>{{producto.description}}</td>
-          <td>{{producto.photo}}</td>
+          <td><img [src]="producto.photo" alt="{{producto.name}}" id="producto"></td>
           <td>
             <button class="btn btn-outline-warning mx-4" title="Actualizar producto" (click)="actualizarProducto(producto)"><i class="fa-regular fa-pen-to-square"></i></button>
             <button class="btn btn-outline-danger" title="Eliminar producto" (click)="deleteProducto(producto._id)"><i class="fa-regular fa-trash-can"></i></button>
@@ -32,4 +32,7 @@
         </tr>
       </tbody>
     </table>
+    <div class="card flex justify-content-center">
+      <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="productos.length" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+  </div>
   </div>

@@ -5,6 +5,7 @@ import { BranchOfficesService } from 'src/app/core/branch_offices/branch-offices
 import { IBranch_Office } from 'src/app/core/branch_offices/branch_offices';
 import { UpdateUserDto } from 'src/app/core/users/updateUser.dto';
 import { UsersService } from 'src/app/core/users/users.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-update-user',
   templateUrl: './update-user.component.html',
@@ -48,8 +49,20 @@ export class UpdateUserComponent implements OnInit{
           console.log(updateuserDto);
           const updatedUser = await this.userService.update(this.usuario._id, updateuserDto);
           console.log('Sucursal actualizado:', updatedUser);
+          Swal.fire({
+            title: `El usuario ${updateuserDto.name}`,
+            text: 'Fue actualizado exitosamente!',
+            icon: 'success',
+            confirmButtonText: 'Cerrar'
+          });
           this.router.navigate(['/usuarios']);
         } catch (error) {
+          Swal.fire({
+            title: `El usuario ${updateuserDto.name} No fue actualizado!`,
+            text: 'Revisa tu petición.',
+            icon: 'error',
+            confirmButtonText: 'Cerrar'
+          });
           console.error('Error al actualizar la sucursal:', error);
         }
       }
