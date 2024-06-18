@@ -9,7 +9,7 @@ import { UpdateBranchOfficeDto } from './updateBranch_offices.dto';
   providedIn: 'root'
 })
 export class BranchOfficesService {
-  private baseUrl: string = 'http://localhost:3000/branch-offices';
+  private baseUrl: string = 'https://back-oxxo.onrender.com/branch-offices';
 
   constructor() {}
 

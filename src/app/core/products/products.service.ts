@@ -10,7 +10,7 @@ import { IProduct, IProductResponse } from './products';
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl: string = 'http://localhost:3000/products';
+  private baseUrl: string = 'https://back-oxxo.onrender.com/products';
 
   constructor() {}
 

@@ -9,7 +9,7 @@ import { UpdateUserDto } from './updateUser.dto';
   providedIn: 'root'
 })
 export class UsersService {
-  private baseUrl: string = 'http://localhost:3000/users';
+  private baseUrl: string = 'https://back-oxxo.onrender.com/users';
 
   constructor() {}
 

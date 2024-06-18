@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor() {
     this.axiosClient = axios.create({
-      baseURL: 'http://localhost:3000/auth',
+      baseURL: 'https://back-oxxo.onrender.com/auth',
       timeout: 1000,
       headers: { 'Content-Type': 'application/json' },
     });

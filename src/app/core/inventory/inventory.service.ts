@@ -8,7 +8,7 @@ import { IInventory } from './inventory';
   providedIn: 'root'
 })
 export class InventoryService {
-  private baseUrl: string = 'http://localhost:3000/inventory';
+  private baseUrl: string = 'https://back-oxxo.onrender.com/inventory';
 
   constructor() {}
 

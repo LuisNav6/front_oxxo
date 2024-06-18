@@ -7,7 +7,7 @@ import { ISales } from './sales';
   providedIn: 'root'
 })
 export class SalesService {
-  private baseUrl: string = 'http://localhost:3000/sales';
+  private baseUrl: string = 'https://back-oxxo.onrender.com/sales';
 
   constructor() {}
 
