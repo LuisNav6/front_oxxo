@@ -30,16 +30,6 @@ export class BranchOfficesComponent implements OnInit{
     this.router.navigate(['/update-branch'], { state: { branch } });
   }
 
-  async deleteBranch(id:string){
-    await this.branchOfficesService.delete(id);
-    Swal.fire({
-      title: 'Usuario eliminado exitosamente!',
-      text: `"`,
-      icon: 'success',
-      confirmButtonText: 'Cerrar'
-    });
-    this.loadBranches();
-  }
 
   onPageChange(event: PaginatorState) {
     this.first = event.first ?? 0;
